@@ -14,7 +14,10 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $data=Petugas::all();
+        return view('index')->with([
+            'data'=> $data
+        ]);
     }
 
     /**
@@ -48,7 +51,10 @@ class PetugasController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=Petugas::findOrFail($id);
+        return view('show')->with([
+            'data'=> $data
+        ]);
     }
 
     /**
@@ -59,7 +65,7 @@ class PetugasController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -71,7 +77,10 @@ class PetugasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataEdit=Petugas::findOrFail($id);
+        $data=$request->except(['_token']);
+        $dataEdit->update($data);
+        return redirect('/');
     }
 
     /**
@@ -82,6 +91,8 @@ class PetugasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dataEdit=Petugas::findOrFail($id);
+        $dataEdit->delete();
+        return redirect('/');
     }
 }

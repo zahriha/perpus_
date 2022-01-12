@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('template.layout')
 
 @section('content')
 <section>
@@ -17,6 +17,7 @@
                     <label for="formFile" class="form-label">Jabatan</label>
                     <input class="form-control" type="text" name="jabatan">
                 </div>
+                
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">HP</label>

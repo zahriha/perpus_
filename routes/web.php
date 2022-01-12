@@ -14,9 +14,15 @@ use App\Http\Controllers\PetugasController;
 |
 */
 
-//Route::get('/', function () {
-  //  return view('welcome');
-//});
+Route::get('/home', function () {
+  return view('home');
+});
+
 Route::get('/', [PetugasController::class,'index']);
 Route::get('/create', [PetugasController::class, 'create']);
 Route::post('/store', [PetugasController::class, 'store']);
+Route::get('/show/{id}', [PetugasController::class, 'show']);
+Route::post('/update/{id}', [PetugasController::class, 'update']);
+Route::get('/destroy/{id}', [PetugasController::class, 'destroy']);
+
+
