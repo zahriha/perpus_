@@ -3,30 +3,30 @@
 @section('content')
 <section>
 <div class="container-fluid">
-	<h1>Tambahkan Data Petugas</h1>
+	<h1>Edit Data Petugas</h1>
         <div class="row">
             <div class="col-lg-8">
-			<form  action="{{ url('/store') }}" method="POST">
+			<form  action="{{ url('/update/' . $data->id) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Nama</label>
-                    <input class="form-control" type="text" name="nama">
+                    <input class="form-control" type="text" name="nama" value="{{$data->nama}}">
                 </div>
                 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Jabatan</label>
-                    <input class="form-control" type="text" name="jabatan">
+                    <input class="form-control" type="text" name="jabatan" value="{{$data->jabatan}}">
                 </div>
                 
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">HP</label>
-                    <input class="form-control" type="number" name="hp">
+                    <input class="form-control" type="number" name="hp" value="{{$data->hp}}">
                 </div>
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Alamat</label>
-                    <input class="form-control" type="text" name="alamat">
+                    <input class="form-control" type="text" name="alamat" value="{{$data->alamat}}">
                 </div>                                                                                                                                                                                                                                                                                                                                                                                                                            
 
                 
@@ -51,4 +51,3 @@
 
 </section>
 @endsection
- 

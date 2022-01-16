@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Petugas;
+use App\Models\Buku;
 
-class PetugasController extends Controller
+class BukuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        $data=Petugas::all();
-        return view('/addPetugas')->with([
-            'data'=> $data
-        ]);
+      $data=Buku::all();
+      return view('/addBuku')->with([
+          'data'=>$data
+      ]);
     }
 
     /**
@@ -27,7 +27,7 @@ class PetugasController extends Controller
      */
     public function create()
     {
-        return view('/createPetugas');
+        return view('createBuku');
     }
 
     /**
@@ -39,8 +39,8 @@ class PetugasController extends Controller
     public function store(Request $request)
     {
         $data=$request->except(['_token']);
-        Petugas::insert($data);
-        return redirect('/addPetugas');
+        Buku::insert($data);
+        return redirect('/addBuku');
     }
 
     /**
@@ -51,8 +51,8 @@ class PetugasController extends Controller
      */
     public function show($id)
     {
-        $data=Petugas::findOrFail($id);
-        return view('/showPetugas')->with([
+        $data=Buku::findOrFail($id);
+        return view('/showBuku')->with([
             'data'=> $data
         ]);
     }
@@ -65,7 +65,7 @@ class PetugasController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -77,10 +77,10 @@ class PetugasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dataEdit=Petugas::findOrFail($id);
+        $dataEdit=Buku::findOrFail($id);
         $data=$request->except(['_token']);
         $dataEdit->update($data);
-        return redirect('/addPetugas');
+        return redirect('/addBuku');
     }
 
     /**
@@ -91,8 +91,8 @@ class PetugasController extends Controller
      */
     public function destroy($id)
     {
-        $dataEdit=Petugas::findOrFail($id);
+        $dataEdit=Buku::findOrFail($id);
         $dataEdit->delete();
-        return redirect('/addPetugas');
+        return redirect('/addBuku');
     }
 }
