@@ -43,11 +43,11 @@
                 
                 <div class="form-floating mb-3">
  
-                <button class="btn-lg btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
                 </div>
 
                 <div class="form-floating mb-3">
- 				<a href="{{url('/addBuku')}}" class="btn btn-primary">Main Menu</a>
+ 				<a href="{{url('/addBuku')}}" class="btn btn-primary btn-lg btn-block">Main Menu</a>
             </div>
             </form>
 			

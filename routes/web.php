@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\AnggotaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,6 @@ Route::get('/showPetugas/{id}', [PetugasController::class, 'show']);
 Route::post('/update/{id}', [PetugasController::class, 'update']);
 Route::get('/destroy/{id}', [PetugasController::class, 'destroy']);
 
-
 //Buku
 Route::get('/addBuku', [BukuController::class,'index']);
 Route::get('/createBuku', [BukuController::class, 'create']);
@@ -35,4 +35,12 @@ Route::post('/storeBuku', [BukuController::class, 'store']);
 Route::get('/showBuku/{id}', [BukuController::class, 'show']);
 Route::post('/update/{id}', [BukuController::class, 'update']);
 Route::get('/destroy/{id}', [BukuController::class, 'destroy']);
+
+//Anggota
+Route::get('/addAnggota', [AnggotaController::class,'index']);
+Route::get('/createAnggota', [AnggotaController::class, 'create']);
+Route::post('/storeAnggota', [AnggotaController::class, 'store']);
+Route::get('/showAnggota/{id}', [AnggotaController::class, 'show']);
+Route::post('/update/{id}', [AnggotaController::class, 'update']);
+Route::get('/destroy/{id}', [AnggotaController::class, 'destroy']);
 

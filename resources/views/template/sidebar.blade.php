@@ -41,6 +41,12 @@
         <span>Data Buku</span></a>
 </li>
 
+<li class="nav-item">
+    <a class="nav-link" href="{{url('/addAnggota')}}">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Data Anggota</span></a>
+</li>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
