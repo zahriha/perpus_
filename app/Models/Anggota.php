@@ -20,4 +20,8 @@ class Anggota extends Model
 
     ];
     protected $hidden;
+
+    public function Peminjaman(){
+        return $this->hasMany(Peminjaman::class);
+    }
 }

@@ -21,4 +21,12 @@ class Buku extends Model
     ];
     protected $hidden;
 
+    public function Rak(){
+        return $this->hasMany(Rak::class);
+    }
+
+    public function Peminjaman(){
+        return $this->hasMany(Peminjaman::class);
+    }
+ 
 }

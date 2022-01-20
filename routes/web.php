@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\RakController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +45,20 @@ Route::post('/storeAnggota', [AnggotaController::class, 'store']);
 Route::get('/showAnggota/{id}', [AnggotaController::class, 'show']);
 Route::post('/update/{id}', [AnggotaController::class, 'update']);
 Route::get('/destroy/{id}', [AnggotaController::class, 'destroy']);
+
+//Rak
+Route::get('/addRak', [RakController::class,'index']);
+Route::get('/createRak', [RakController::class, 'create']);
+Route::post('/storeRak', [RakController::class, 'store']);
+Route::get('/showRak/{id}', [RakController::class, 'show']);
+Route::post('/update/{id}', [RakController::class, 'update']);
+Route::get('/destroy/{id}', [RakController::class, 'destroy']);
+
+//Peminjaman
+Route::get('/addPeminjaman', [PeminjamanController::class,'index']);
+Route::get('/createPeminjaman', [PeminjamanController::class, 'create']);
+Route::post('/storePeminjaman', [PeminjamanController::class, 'store']);
+Route::get('/showPeminjaman/{id}', [PeminjamanController::class, 'show']);
+Route::post('/update/{id}', [PeminjamanController::class, 'update']);
+Route::get('/destroy/{id}', [PeminjamanController::class, 'destroy']);
 

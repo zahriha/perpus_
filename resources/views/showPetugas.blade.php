@@ -32,7 +32,7 @@
                 
                 <div class="mb-3">
  
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Update</button>
                 </div>
 
                 <div class="mb-3">
@@ -49,3 +49,4 @@
 
 </section>
 @endsection
+

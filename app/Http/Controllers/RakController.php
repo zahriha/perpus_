@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\Rak;
 use App\Models\Buku;
 
-class BukuController extends Controller
+
+class RakController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +17,8 @@ class BukuController extends Controller
      */
     public function index()
     {
-      $data=Buku::all();
-      return view('/addBuku')->with([
-          'data'=>$data
-      ]);
+        $data=Rak::with('buku')->paginate();    
+        return view('/addRak', compact('data'));
     }
 
     /**
@@ -27,7 +28,10 @@ class BukuController extends Controller
      */
     public function create()
     {
-        return view('createBuku');
+        $cbuku=Buku::all();    
+        return view('createRak', compact('cbuku'));
+        
+
     }
 
     /**
@@ -39,9 +43,9 @@ class BukuController extends Controller
     public function store(Request $request)
     {
         $data=$request->except(['_token']);
-        Buku::insert($data);
-        return redirect('/addBuku');
-    }
+        Rak::insert($data);
+        return redirect('/addRak');   
+     }
 
     /**
      * Display the specified resource.
@@ -51,10 +55,9 @@ class BukuController extends Controller
      */
     public function show($id)
     {
-        $data=Buku::findOrFail($id);
-        return view('/showBuku')->with([
-            'data'=>$data
-        ]);
+        $cbuku=Buku::all();    
+        $data=Rak::findOrFail($id);
+        return view('/showRak', compact('data','cbuku'));
     }
 
     /**
@@ -77,12 +80,14 @@ class BukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dataEdit=Buku::findOrFail($id);
+        $cbuku=Buku::all();    
+        $dataEdit=Rak::findOrFail($id);
         $data=$request->except(['_token']);
         $dataEdit->update($data);
-        return redirect('/addBuku');
-    }
+        return redirect('/addRak');
 
+       // return view('/addRak',compact('dataEdit','data','cbuku'));
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -91,8 +96,8 @@ class BukuController extends Controller
      */
     public function destroy($id)
     {
-        $dataEdit=Buku::findOrFail($id);
+        $dataEdit=Rak::findOrFail($id);
         $dataEdit->delete();
-        return redirect('/addBuku');
+        return redirect('/addRak');
     }
 }

@@ -18,4 +18,8 @@ class Petugas extends Model
         'alamat'
     ];
     protected $hidden;
+
+    public function Peminjaman(){
+        return $this->hasMany(Peminjaman::class);
+    }
 }

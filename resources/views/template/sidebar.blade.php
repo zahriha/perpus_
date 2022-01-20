@@ -47,6 +47,18 @@
         <span>Data Anggota</span></a>
 </li>
 
+<li class="nav-item">
+    <a class="nav-link" href="{{url('/addRak')}}">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Data Rak</span></a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="{{url('/addPeminjaman')}}">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Data Peminjaman</span></a>
+</li>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

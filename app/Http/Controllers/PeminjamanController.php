@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Buku;
+use App\Models\Anggota;
+use App\Models\Petugas;
+use App\Models\Peminjaman;
 
-class BukuController extends Controller
+
+class PeminjamanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +18,8 @@ class BukuController extends Controller
      */
     public function index()
     {
-      $data=Buku::all();
-      return view('/addBuku')->with([
-          'data'=>$data
-      ]);
+        $data=Peminjaman::with('buku','anggota','petugas')->paginate();    
+        return view('/addPeminjaman', compact('data'));
     }
 
     /**
@@ -27,7 +29,10 @@ class BukuController extends Controller
      */
     public function create()
     {
-        return view('createBuku');
+        $cbuku=Buku::all();    
+        $canggota=Anggota::all();    
+        $cpetugas=Petugas::all();    
+        return view('createPeminjaman', compact('cbuku','canggota','cpetugas'));
     }
 
     /**
@@ -39,8 +44,8 @@ class BukuController extends Controller
     public function store(Request $request)
     {
         $data=$request->except(['_token']);
-        Buku::insert($data);
-        return redirect('/addBuku');
+        Peminjaman::insert($data);
+        return redirect('/addPeminjaman'); 
     }
 
     /**
@@ -51,10 +56,11 @@ class BukuController extends Controller
      */
     public function show($id)
     {
-        $data=Buku::findOrFail($id);
-        return view('/showBuku')->with([
-            'data'=>$data
-        ]);
+        $cbuku=Buku::all();    
+        $canggota=Anggota::all();    
+        $cpetugas=Petugas::all();  
+        $data=Peminjaman::findOrFail($id);
+        return view('/showPeminjaman', compact('data','cbuku','canggota','cpetugas'));
     }
 
     /**
@@ -77,10 +83,13 @@ class BukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dataEdit=Buku::findOrFail($id);
+        $cbuku=Buku::all(); 
+        $canggota=Anggota::all();    
+        $cpetugas=Petugas::all();     
+        $dataEdit=Rak::findOrFail($id);
         $data=$request->except(['_token']);
         $dataEdit->update($data);
-        return redirect('/addBuku');
+        return redirect('/addRak');
     }
 
     /**
@@ -91,8 +100,8 @@ class BukuController extends Controller
      */
     public function destroy($id)
     {
-        $dataEdit=Buku::findOrFail($id);
+        $dataEdit=Peminjaman::findOrFail($id);
         $dataEdit->delete();
-        return redirect('/addBuku');
+        return redirect('/addPeminjaman');
     }
 }
