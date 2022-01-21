@@ -26,6 +26,8 @@
 												<th>Buku</th>
                                                 <th>Anggota</th>
                                                 <th>Petugas</th>
+                                                <th>Durasi Peminjaman</th>
+                                                <th>Denda</th>
 												<th>Aksi</th>
                                         </tr>
                                         @foreach ($data as $dataPeminjaman)
@@ -36,6 +38,30 @@
                                                 <td>{{ $dataPeminjaman->id_buku}}</td>
                                                 <td>{{ $dataPeminjaman->id_anggota}}</td>
                                                 <td>{{ $dataPeminjaman->id_petugas}}</td>
+
+                                                <td>
+                                                    <?php 
+                                                        $datetime2 = strtotime($dataPeminjaman->tgl_kembali) ;
+                                                        $datenow = strtotime(date("Y-m-d"));
+                                                        $durasi = ($datetime2 - $datenow) / 86400 ;
+                                                    ?>
+                                                     @if ($durasi < 0 )
+                                                        Durasi Habis / {{ $durasi }} Hari
+                                                     @else
+                                                        {{ $durasi }} Hari
+                                                     @endif
+                                                </td>
+
+                                                <td>
+                                                     @if ($durasi < 0)
+                                                        <?php $denda = abs($durasi) * 1000 ; ?>
+                                                            {{ $denda }}
+                                                    @else
+                                                         0
+                                                    @endif
+                                                </td>
+
+
 
 												<td>
 												<a href="{{url('/showPeminjaman/' . $dataPeminjaman->id) }}" class="btn btn-warning">Edit</a>
@@ -54,5 +80,6 @@
 
 
 </section>
+
+
 @endsection
- 

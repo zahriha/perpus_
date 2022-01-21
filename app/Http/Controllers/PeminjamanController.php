@@ -48,6 +48,7 @@ class PeminjamanController extends Controller
         return redirect('/addPeminjaman'); 
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -86,10 +87,10 @@ class PeminjamanController extends Controller
         $cbuku=Buku::all(); 
         $canggota=Anggota::all();    
         $cpetugas=Petugas::all();     
-        $dataEdit=Rak::findOrFail($id);
+        $dataEdit=Peminjaman::findOrFail($id);
         $data=$request->except(['_token']);
         $dataEdit->update($data);
-        return redirect('/addRak');
+        return redirect('/addPeminjaman');
     }
 
     /**
