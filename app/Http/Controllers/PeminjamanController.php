@@ -7,6 +7,9 @@ use App\Models\Buku;
 use App\Models\Anggota;
 use App\Models\Petugas;
 use App\Models\Peminjaman;
+use RealRashid\SweetAlert\Facades\Alert;
+
+
 
 
 class PeminjamanController extends Controller
@@ -33,6 +36,8 @@ class PeminjamanController extends Controller
         $canggota=Anggota::all();    
         $cpetugas=Petugas::all();    
         return view('createPeminjaman', compact('cbuku','canggota','cpetugas'));
+
+
     }
 
     /**
@@ -45,7 +50,21 @@ class PeminjamanController extends Controller
     {
         $data=$request->except(['_token']);
         Peminjaman::insert($data);
-        return redirect('/addPeminjaman'); 
+
+        $stok = Buku::find($request->id_buku);
+        if ($stok->stok <= 0 ) {
+            session()->flash('Maaf Stock Buku Habis', 'danger');
+
+            return redirect()->back();
+        }
+     
+
+        $book = Buku::find($request->id_buku);
+        $book->stok = $book->stok - 1 ; 
+        $book->save();
+
+
+        return redirect('/addPeminjaman')->with('toast-success', 'Data Berhasil Ditambah'); 
     }
 
     
@@ -90,7 +109,7 @@ class PeminjamanController extends Controller
         $dataEdit=Peminjaman::findOrFail($id);
         $data=$request->except(['_token']);
         $dataEdit->update($data);
-        return redirect('/addPeminjaman');
+        return redirect('/addPeminjaman')->with('toast-success', 'Data Berhasil Diupdate');
     }
 
     /**
@@ -103,6 +122,11 @@ class PeminjamanController extends Controller
     {
         $dataEdit=Peminjaman::findOrFail($id);
         $dataEdit->delete();
-        return redirect('/addPeminjaman');
+        $book = Buku::find($dataEdit->id_buku);
+        $book->stok = $book->stok + 1 ;
+        $book->save();
+
+
+        return redirect('/addPeminjaman')->with('info', 'Data Berhasil Dihapus');
     }
 }

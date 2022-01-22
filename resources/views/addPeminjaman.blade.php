@@ -2,6 +2,7 @@
 
 
 @section('content')
+
 <section>
 
  <!-- Page Heading -->
@@ -11,10 +12,10 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                    <div class="card-header py-3">
                     
                             <h6 class="m-0 font-weight-bold text-primary">Details</h6>
-                        </div>
+                    </div>   
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -30,8 +31,10 @@
                                                 <th>Denda</th>
 												<th>Aksi</th>
                                         </tr>
+                                        </thead>
                                         @foreach ($data as $dataPeminjaman)
-										<tr>
+                                    <tbody>
+                                        <tr>
 												<td>{{ $dataPeminjaman->id}}</td>
 												<td>{{ $dataPeminjaman->tgl_pinjam}}</td>
 												<td>{{ $dataPeminjaman->tgl_kembali}}</td>
@@ -61,24 +64,24 @@
                                                     @endif
                                                 </td>
 
-
-
+                                              
 												<td>
 												<a href="{{url('/showPeminjaman/' . $dataPeminjaman->id) }}" class="btn btn-warning">Edit</a>
 												<a href="{{url('/destroy/' . $dataPeminjaman->id) }}" class="btn btn-danger">Hapus</a>
 												</td>
 											
 										</tr>
+                                        </tbody>
+
 										@endforeach
-                                    </thead>
-                               
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-       
-
-
+                       
+                            </table>
+                     </div>
+                     
+             </div>
+           
+</div>
+   
 </section>
 
 

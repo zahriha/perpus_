@@ -25,7 +25,15 @@
                     <select class="form-control select2" style="width: 100%;" name="id_buku">
                     <option disabled value>Pilihan</option>
                     @foreach ($cbuku as $combo)
+
+                    @if ($combo->stok<= 0 )
+                    <option disabled>{{$combo->judul}}</option>
+
+                    @else
                     <option value="{{$combo->id}}">{{$combo->judul}}</option>
+                    
+                    @endif
+           
 
                     @endforeach          
                    </select>

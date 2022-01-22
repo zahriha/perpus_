@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Anggota;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 
@@ -17,9 +19,7 @@ class AnggotaController extends Controller
     public function index()
     {
         $data=Anggota::all();
-        return view('/addAnggota')->with([
-            'data'=>$data
-        ]);
+        return view('/addAnggota',compact('data'));
     }
 
     /**
@@ -42,7 +42,7 @@ class AnggotaController extends Controller
     {
         $data=$request->except(['_token']);
         Anggota::insert($data);
-        return redirect('/addAnggota');
+        return redirect('/addAnggota')->with('toast-success', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -82,7 +82,7 @@ class AnggotaController extends Controller
         $dataEdit=Anggota::findOrFail($id);
         $data=$request->except(['_token']);
         $dataEdit->update($data);
-        return redirect('/addAnggota');
+        return redirect('/addAnggota')->with('toast-success', 'Data Berhasil Diupdate');
     }
 
     /**
@@ -95,6 +95,6 @@ class AnggotaController extends Controller
     {
         $dataEdit=Anggota::findOrFail($id);
         $dataEdit->delete();
-        return redirect('/addAnggota');
+        return redirect('/addAnggota')->with('info', 'Data Berhasil Dihapus');
     }
 }
