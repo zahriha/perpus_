@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Buku;
 use App\Models\Anggota;
-use App\Models\Petugas;
+
 use App\Models\Peminjaman;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,7 +21,7 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $data=Peminjaman::with('buku','anggota','petugas')->paginate();    
+        $data=Peminjaman::with('buku','anggota')->paginate();    
         return view('/addPeminjaman', compact('data'));
     }
 
@@ -33,9 +33,8 @@ class PeminjamanController extends Controller
     public function create()
     {
         $cbuku=Buku::all();    
-        $canggota=Anggota::all();    
-        $cpetugas=Petugas::all();    
-        return view('createPeminjaman', compact('cbuku','canggota','cpetugas'));
+        $canggota=Anggota::all();       
+        return view('createPeminjaman', compact('cbuku','canggota'));
 
 
     }
@@ -77,10 +76,10 @@ class PeminjamanController extends Controller
     public function show($id)
     {
         $cbuku=Buku::all();    
-        $canggota=Anggota::all();    
-        $cpetugas=Petugas::all();  
+        $canggota=Anggota::all();  
+
         $data=Peminjaman::findOrFail($id);
-        return view('/showPeminjaman', compact('data','cbuku','canggota','cpetugas'));
+        return view('/showPeminjaman', compact('data','cbuku','canggota'));
     }
 
     /**
@@ -104,12 +103,12 @@ class PeminjamanController extends Controller
     public function update(Request $request, $id)
     {
         $cbuku=Buku::all(); 
-        $canggota=Anggota::all();    
-        $cpetugas=Petugas::all();     
+        $canggota=Anggota::all();  
+          
         $dataEdit=Peminjaman::findOrFail($id);
         $data=$request->except(['_token']);
         $dataEdit->update($data);
-        return redirect('/addPeminjaman')->with('toast-success', 'Data Berhasil Diupdate');
+        return redirect('/addPeminjaman');
     }
 
     /**
@@ -127,6 +126,6 @@ class PeminjamanController extends Controller
         $book->save();
 
 
-        return redirect('/addPeminjaman')->with('info', 'Data Berhasil Dihapus');
+        return redirect('/addPeminjaman');
     }
 }

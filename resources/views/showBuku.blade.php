@@ -3,7 +3,7 @@
 @section('content')
 <section>
 <div class="container-fluid">
-	<h1>Edit Data Petugas</h1>
+	<h1>Edit Data Buku</h1>
         <div class="row">
             <div class="col-lg">
 			<form  action="{{ url('/update/' . $data->id) }}" method="POST">

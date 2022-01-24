@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Petugas;
+use App\Models\User;
 
-class PetugasController extends Controller
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        $data=Petugas::all();
-        return view('/addPetugas')->with([
+        $data=User::all();
+        return view('/addUser')->with([
             'data'=> $data
         ]);
     }
@@ -27,7 +28,8 @@ class PetugasController extends Controller
      */
     public function create()
     {
-        return view('createPetugas');
+        return view('createUser');
+
     }
 
     /**
@@ -39,8 +41,8 @@ class PetugasController extends Controller
     public function store(Request $request)
     {
         $data=$request->except(['_token']);
-        Petugas::insert($data);
-        return redirect('/addPetugas');
+        User::insert($data);
+        return redirect('/addUser');
     }
 
     /**
@@ -51,8 +53,8 @@ class PetugasController extends Controller
      */
     public function show($id)
     {
-        $data=Petugas::findOrFail($id);
-        return view('/showPetugas')->with([
+        $data=User::findOrFail($id);
+        return view('/showUser')->with([
             'data'=> $data
         ]);
     }
@@ -65,7 +67,7 @@ class PetugasController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -77,10 +79,10 @@ class PetugasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dataEdit=Petugas::findOrFail($id);
+        $dataEdit=User::findOrFail($id);
         $data=$request->except(['_token']);
         $dataEdit->update($data);
-        return redirect('/addPetugas');
+        return redirect('/addUser');
     }
 
     /**
@@ -91,8 +93,8 @@ class PetugasController extends Controller
      */
     public function destroy($id)
     {
-        $dataEdit=Petugas::findOrFail($id);
+        $dataEdit=User::findOrFail($id);
         $dataEdit->delete();
-        return redirect('/addPetugas');
+        return redirect('/addUser');
     }
 }

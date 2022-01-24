@@ -118,14 +118,7 @@
     <!-- Page level plugins -->
     <script src="{{ url ('vendor/sweetalert/sweetalert.all.js')}}"></script>
 
-    <script src="{{ url('js/jquery.dataTables.js') }}"></script>
-    <script src="{{ url('js/dataTables.bootstrap.js') }}"></script>
-    <script>
-        $(window).ready(function(){
-            $('table').DataTable();
-        });
-    </script>
-   
+ 
 
 </body>
 

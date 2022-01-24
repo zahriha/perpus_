@@ -39,6 +39,7 @@
                    </select>
                 </div>
 
+                
                 <div class="form-floating mb-3">
                     <label for="formFile" class="form-label">Anggota</label>
                     <select class="form-control select2" style="width: 100%;" name="id_anggota">
@@ -53,11 +54,10 @@
                 <div class="form-floating mb-3">
                     <label for="formFile" class="form-label">Petugas</label>
                     <select class="form-control select2" style="width: 100%;" name="id_petugas">
-                    <option disabled value>Pilihan</option>
-                    @foreach ($cpetugas as $combo)
-                    <option value="{{$combo->id}}">{{$combo->nama}}</option>
-
-                    @endforeach          
+              
+                    <option>{{Auth::user()-> name}}</option>
+                    
+                            
                    </select>
                 </div>
 

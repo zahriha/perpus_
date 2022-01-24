@@ -67,7 +67,8 @@
                                               
 												<td>
 												<a href="{{url('/showPeminjaman/' . $dataPeminjaman->id) }}" class="btn btn-warning">Edit</a>
-												<a href="{{url('/destroy/' . $dataPeminjaman->id) }}" class="btn btn-danger">Hapus</a>
+                                                <a href="{{url('/destroy/' . $dataPeminjaman->id) }}" class="btn btn-danger">Kembalikan Buku</a>
+
 												</td>
 											
 										</tr>

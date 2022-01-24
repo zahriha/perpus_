@@ -4,9 +4,7 @@
 
 
 <section>
-<div class="row">
-Selamat Datang,  ini halaman home <b class="text-uppercase"> {{Auth::user()->name}}</b>
-</div>
+
 
 
    <!-- Content Row -->
@@ -20,7 +18,7 @@ Selamat Datang,  ini halaman home <b class="text-uppercase"> {{Auth::user()->nam
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                         Jumlah Anggota</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"> Orang</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$ang}} Orang</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -37,8 +35,8 @@ Selamat Datang,  ini halaman home <b class="text-uppercase"> {{Auth::user()->nam
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Earnings (Annual)</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                        Jumlah Petugas</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$user}} orang</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -54,11 +52,11 @@ Selamat Datang,  ini halaman home <b class="text-uppercase"> {{Auth::user()->nam
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Buku Tersedia
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$buku}} buah</div>
                         </div>
                         <div class="col">
                             <div class="progress progress-sm mr-2">
@@ -84,8 +82,8 @@ Selamat Datang,  ini halaman home <b class="text-uppercase"> {{Auth::user()->nam
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                        Pending Requests</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            Total Peminjam</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$pinjam}} orang</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -95,6 +93,14 @@ Selamat Datang,  ini halaman home <b class="text-uppercase"> {{Auth::user()->nam
     </div>
 </div>
 </div>
+
+<div class="card-body">
+            <div class="row no-gutters align-items-center">
+                
+            Selamat Datang,  ini halaman home <b class="text-uppercase"> {{Auth::user()->name}}</b>
+
+            </div>
+        </div>
 
 <!-- Content Row -->
 

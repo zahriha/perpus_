@@ -17,8 +17,10 @@ class RakController extends Controller
      */
     public function index()
     {
-        $data=Rak::with('buku')->paginate(5);    
-        return view('/addRak', compact('data'));
+        $data=Rak::all();
+        return view('/addRak')->with([
+            'data'=> $data
+        ]);
     }
 
     /**
@@ -84,7 +86,7 @@ class RakController extends Controller
         $dataEdit=Rak::findOrFail($id);
         $data=$request->except(['_token']);
         $dataEdit->update($data);
-        return redirect('/addRak')->with('toast-success', 'Data Berhasil Diupdate');;
+        return redirect('/addRak');
 
        // return view('/addRak',compact('dataEdit','data','cbuku'));
     }
@@ -98,6 +100,6 @@ class RakController extends Controller
     {
         $dataEdit=Rak::findOrFail($id);
         $dataEdit->delete();
-        return redirect('/addRak')->with('info', 'Data Berhasil Dihapus');
+        return redirect('/addRak');
     }
 }

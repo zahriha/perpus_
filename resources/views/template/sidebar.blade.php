@@ -29,11 +29,7 @@
 
 
 <!-- Nav Item - Tables -->
-<li class="nav-item">
-    <a class="nav-link" href="{{url('/addPetugas')}}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Data Petugas</span></a>
-</li>
+
 
 <li class="nav-item">
     <a class="nav-link" href="{{url('/addBuku')}}">
@@ -48,15 +44,15 @@
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="{{url('/addRak')}}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Data Rak</span></a>
-</li>
-
-<li class="nav-item">
     <a class="nav-link" href="{{url('/addPeminjaman')}}">
         <i class="fas fa-fw fa-table"></i>
         <span>Data Peminjaman</span></a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="{{url('/addUser')}}">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Data User</span></a>
 </li>
 
 <!-- Divider -->
