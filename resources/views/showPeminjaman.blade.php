@@ -6,7 +6,8 @@
 	<h1>Edit Data Peminjaman</h1>
         <div class="row">
             <div class="col-lg">
-			<form  action="{{ url('/update/' . $data->id) }}" method="POST">
+   
+			<form  action="{{ route('update', $data->id) }}" method="POST">
                 @csrf
                 <div class="form-floating mb-3">
                     <label for="formFile" class="form-label">Tanggal Pinjam</label>

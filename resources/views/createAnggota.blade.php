@@ -22,8 +22,16 @@
 
                 <div class="form-floating mb-3">
                     <label for="formFile" class="form-label">Gender</label>
-                    <input class="form-control" type="text" name="jekel">
                 </div>
+                <div class="form-floating mb-3">
+                    <label for="formFile" class="form-label">Laki-laki</label>
+                    <input class="form-check-label" type="radio" name="jekel" value="L">
+
+                    <label for="formFile" class="form-label">Perempuan</label>
+                    <input class="form-check-label" type="radio" name="jekel" value="P">
+                </div>
+
+
 
                 <div class="form-floating mb-3">
                     <label for="formFile" class="form-label">Jurusan</label>
@@ -37,7 +45,7 @@
 
                 <div class="form-floating mb-3">
                     <label for="formFile" class="form-label">Alamat</label>
-                    <input class="form-control" type="text" name="alamat">
+                    <textarea class="form-control" type="text" name="alamat"></textarea>
                 </div>  
 
                 

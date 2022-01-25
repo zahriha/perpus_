@@ -67,15 +67,19 @@ Route::get('/createPeminjaman', [PeminjamanController::class, 'create'])->middle
 Route::post('/storePeminjaman', [PeminjamanController::class, 'store'])->middleware('auth');
 Route::get('/showPeminjaman/{id}', [PeminjamanController::class, 'show'])->middleware('auth');
 Route::post('/update/{id}', [PeminjamanController::class, 'update'])->middleware('auth');
-Route::get('/destroy/{id}', [PeminjamanController::class, 'destroy'])->middleware('auth');
+//Route::get('/destroy/{id}', [PeminjamanController::class, 'destroy'])->middleware('auth');
+
+Route::get('/cetak','App\Http\Controllers\PeminjamanController@cetakdata')->name('cetak');
+Route::get('/destroy/{id}','App\Http\Controllers\PeminjamanController@destroy');
+
 
 //User
 Route::get('/addUser', [UserController::class,'index'])->middleware('auth');
 Route::get('/createUser', [UserController::class, 'create'])->middleware('auth');
 Route::post('/storeUser', [UserController::class, 'store'])->middleware('auth');
 Route::get('/showUser/{id}', [UserController::class, 'show'])->middleware('auth');
-Route::post('/update/{id}', [UserController::class, 'update'])->middleware('auth');
-Route::get('/destroy/{id}', [UserController::class, 'destroy'])->middleware('auth');
+//Route::post('/update/{id}', [UserController::class, 'update'])->middleware('auth');
+//Route::get('/destroy/{id}', [UserController::class, 'destroy'])->middleware('auth');
 
 
 Auth::routes();

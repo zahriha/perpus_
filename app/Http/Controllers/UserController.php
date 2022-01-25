@@ -79,10 +79,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dataEdit=User::findOrFail($id);
-        $data=$request->except(['_token']);
-        $dataEdit->update($data);
-        return redirect('/addUser');
+        //
     }
 
     /**
@@ -93,8 +90,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $dataEdit=User::findOrFail($id);
-        $dataEdit->delete();
-        return redirect('/addUser');
+        //
     }
 }

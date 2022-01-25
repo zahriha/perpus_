@@ -25,6 +25,12 @@ class PeminjamanController extends Controller
         return view('/addPeminjaman', compact('data'));
     }
 
+    public function cetakdata()
+    {
+        $data=Peminjaman::with('buku','anggota')->get();    
+        return view('/cetak', compact('data'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

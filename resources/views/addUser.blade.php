@@ -36,12 +36,6 @@
 												<td>{{ $dataUser->email}}</td>
                                                 <td>{{ $dataUser->password}}</td>
                                                
-
-                                                                 
-												<td>
-												<a href="{{url('/showUser/' . $dataUser->id) }}" class="btn btn-warning">Edit</a>
-												<a href="{{url('/destroy/' . $dataUser->id) }}" class="btn btn-danger">Hapus</a>
-												</td>
 											
 										</tr>
                                         </tbody>

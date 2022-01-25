@@ -1,25 +1,17 @@
-@extends('template.layout')
-
-
-@section('content')
-
-<section>
-
- <!-- Page Heading -->
- <h1 class="h3 mb-2 text-gray-800">Data Peminjaman</h1>
-                    <a class="btn btn-primary" href="{{url('/createPeminjaman')}}">Tambah Peminjaman <i class="fas fa-plus-square"></i></a>
-                    <a class="btn btn-success" target="_blank" href="{{url('/cetak')}}">Cetak Data <i class="fas fa-print"></i></a>
-
-
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                    
-                            <h6 class="m-0 font-weight-bold text-primary">Details</h6>
-                    </div>   
-                        <div class="card-body">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CETAK DATA PEMINJAMAN</title>
+</head>
+<body>
+    <div class="form-group">
+        <p align="center"><b>Laporan Data Peminjaman</b></p>
+        <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" align="center" border="1px" id="dataTable" cellspacing="0">
                                     <thead>
                                         <tr>
                                                 <th>No</th>
@@ -30,7 +22,6 @@
                                                 <th>Petugas</th>
                                                 <th>Durasi Peminjaman</th>
                                                 <th>Denda</th>
-												<th>Aksi</th>
                                         </tr>
                                     </thead>
                                         @foreach ($data as $dataPeminjaman)
@@ -50,7 +41,7 @@
                                                         $durasi = ($datetime2 - $datenow) / 86400 ;
                                                     ?>
                                                      @if ($durasi < 0 )
-                                                        Terlambat {{ $durasi }} Hari
+                                                        Terlambat  {{ $durasi }} Hari
                                                      @else
                                                         {{ $durasi }} Hari
                                                      @endif
@@ -66,12 +57,6 @@
                                                 </td>
 
                                               
-												<td>
-												<a href="{{url('/showPeminjaman/' . $dataPeminjaman->id) }}" class="btn btn-warning">Edit</a>
-                                                <a href="{{url('/destroy/' . $dataPeminjaman->id) }}" class="btn btn-danger">Kembalikan Buku</a>
-
-												</td>
-											
 										</tr>
                                     </tbody>
 
@@ -79,12 +64,16 @@
                        
                             </table>
                      </div>
-                     
-             </div>
-           
-</div>
-   
-</section>
+      
+                                       
 
 
-@endsection
+        </table>
+
+
+    </div>
+    <script type="text/javascript">
+        window.print();
+    </script>
+</body>
+</html>
